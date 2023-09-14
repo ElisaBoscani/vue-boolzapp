@@ -2,6 +2,7 @@ body {
   background-color: var(--bz-app-principal);
   font-family: "Roboto", sans-serif;
 }
+/* colors */
 :root {
   --bz-app-principal: #dbdbd2;
   --bz-app-header: #009688;
@@ -32,6 +33,11 @@ body {
   background-image: url(/asset/img/mine.jpg);
   width: 100%;
 }
+.bg_message {
+  background-color: var(--bz-app-success);
+}
+
+/* circol */
 .circol_icon {
   height: 80px;
   width: 80px;
@@ -40,4 +46,16 @@ body {
 .circol {
   width: 70px;
   border-radius: 50%;
+}
+
+/* dimensions */
+.width_message {
+  width: 40%;
+}
+
+.height_box {
+  height: 100vh;
+}
+.height_message {
+  height: calc(100vh - 206px);
 }
