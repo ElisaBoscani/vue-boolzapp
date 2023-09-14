@@ -1,0 +1,41 @@
+body {
+  background-color: var(--bz-app-principal);
+  font-family: "Roboto", sans-serif;
+}
+:root {
+  --bz-app-principal: #dbdbd2;
+  --bz-app-header: #009688;
+  --bz-app-success: #d5f9ba;
+  --bz-app-light: #e9ebeb;
+  --bz-app-white: #ffffff;
+  --bz-app-focus: #8edafc;
+  --bz--app-icon: #808080;
+}
+
+.bg_top {
+  background-color: var(--bz-app-header);
+  padding: 100px;
+}
+.bg_principal {
+  background-color: var(--bz-app-light);
+}
+.bg_notice {
+  background-color: var(--bz-app-focus);
+}
+.bg_white {
+  background-color: var(--bz-app-white);
+}
+.text_icon {
+  color: var(--bz--app-icon);
+}
+
+.circol_icon {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+.circol {
+  width: 70px;
+
+  border-radius: 50%;
+}
