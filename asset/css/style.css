@@ -28,7 +28,10 @@ body {
 .text_icon {
   color: var(--bz--app-icon);
 }
-
+.bg_img {
+  background-image: url(/asset/img/mine.jpg);
+  width: 100%;
+}
 .circol_icon {
   height: 80px;
   width: 80px;
@@ -36,6 +39,5 @@ body {
 }
 .circol {
   width: 70px;
-
   border-radius: 50%;
 }
