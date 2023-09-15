@@ -73,25 +73,28 @@
             </div>
           </div>
           <!-- card chat -->
-          <div>
-            <div class="input-group p-3 bg-light">
-              <span class="input-group-text bg-white" id="basic-addon1">
-                <i
-                  class="fa-solid fa-magnifying-glass fa-xl"
-                  style="color: #808080"
-                ></i>
-              </span>
-              <input
-                type="text"
-                class="form-control p-3"
-                placeholder="Cerca o inizia una nuova chat"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-              />
-            </div>
+
+          <div class="input-group p-3 bg-light">
+            <span class="input-group-text bg-white" id="basic-addon1">
+              <i
+                class="fa-solid fa-magnifying-glass fa-xl"
+                style="color: #808080"
+              ></i>
+            </span>
+            <input
+              type="text"
+              class="form-control p-3"
+              placeholder="Cerca o inizia una nuova chat"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+          <div class="height_chat">
             <div
-              class="d-flex justify-content-between p-3 border-top border-2 bg-white"
-              v-for="contact in contacts"
+              class="d-flex justify-content-between p-4 border-top border-2 bg_white"
+              :class="index === activeConctact ? 'active' : ''"
+              v-for="(contact, index) in contacts"
+              @click="selectChat(index)"
             >
               <div class="d-flex gap-4">
                 <img :src="contact.avatar" alt="" class="circol" />
@@ -111,7 +114,11 @@
             class="d-flex bg_principal justify-content-between align-items-center p-4"
           >
             <div class="d-flex align-items-center gap-3">
-              <img :src="contacts[0].avatar" alt="" class="circol" />
+              <img
+                :src="contacts[activeConctact].avatar"
+                alt=""
+                class="circol"
+              />
               <div>
                 <span class="fs-5 fw-bold">{{contacts[0].name}}</span>
                 <p class="text_icon">Ultimo accesso oggi alle 12.00</p>
@@ -150,7 +157,7 @@
             </div>
             <div class="p-3 bg-white border rounded-4 mt-3 width_message">
               <p class="fs-5 fw-bolder lh-1">
-                {{contacts[0].messages[1].message}}
+                {{contacts[0].messages[2].message}}
               </p>
               <span class="d-flex justify-content-end text_icon">15.30</span>
             </div>

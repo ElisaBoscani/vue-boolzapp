@@ -1,6 +1,7 @@
 body {
   background-color: var(--bz-app-principal);
   font-family: "Roboto", sans-serif;
+  overflow: hidden;
 }
 /* colors */
 :root {
@@ -52,10 +53,21 @@ body {
 .width_message {
   width: 40%;
 }
-
+/* 
 .height_box {
+  height: calc(100% - 20px);
+} */
+.height_message {
+  height: calc(100% - 206px);
+}
+.height_chat {
+  height: calc(100% - 338px);
+  overflow: auto;
+}
+#app {
   height: 100vh;
 }
-.height_message {
-  height: calc(100vh - 206px);
+
+.active {
+  background-color: #009688;
 }

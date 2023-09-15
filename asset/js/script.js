@@ -2,6 +2,7 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
+      activeConctact: 0,
       contacts: [
         {
           name: "Michele",
@@ -167,5 +168,18 @@ createApp({
       ],
     };
   },
-  methods: {},
+  methods: {
+    selectChat(index) {
+      this.activeConctact = index;
+      console.log("clik");
+      /*   const chat = this.contacts[this.activeConctact];
+      return chat.avatar; */
+    },
+  },
 }).mount("#app");
+
+/* selectImg(index) {
+  this.activeImage = index;
+  const selectedImg = this.slides[this.activeImage];
+  return selectedImg.image;
+}, */
