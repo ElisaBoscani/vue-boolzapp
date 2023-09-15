@@ -115,12 +115,14 @@
           >
             <div class="d-flex align-items-center gap-3">
               <img
-                :src="contacts[activeConctact].avatar"
+                :src="contacts[activeConctact].avatar "
                 alt=""
                 class="circol"
               />
               <div>
-                <span class="fs-5 fw-bold">{{contacts[0].name}}</span>
+                <span class="fs-5 fw-bold"
+                  >{{contacts[activeConctact].name}}</span
+                >
                 <p class="text_icon">Ultimo accesso oggi alle 12.00</p>
               </div>
             </div>
@@ -141,25 +143,15 @@
           </div>
           <!-- messaggi della chat -->
           <div class="container height_message">
-            <div class="d-flex flex-column align-items-end pt-5 pe-5">
+            <div
+              v-for="(msg, index) in selectChat(activeConctact)"
+              :class="differentMessage(index)"
+            >
               <div class="p-3 bg_message border rounded-4 width_message">
-                <p class="fs-5 fw-bolder lh-1">
-                  {{contacts[0].messages[0].message}}
-                </p>
+                <p class="fs-5 fw-bolder lh-1">{{msg}}</p>
+
                 <span class="d-flex justify-content-end text_icon">15.30</span>
               </div>
-              <div class="p-3 bg_message border rounded-4 mt-3 width_message">
-                <p class="fs-5 fw-bolder lh-1">
-                  {{contacts[0].messages[1].message}}
-                </p>
-                <span class="d-flex justify-content-end text_icon">15.30</span>
-              </div>
-            </div>
-            <div class="p-3 bg-white border rounded-4 mt-3 width_message">
-              <p class="fs-5 fw-bolder lh-1">
-                {{contacts[0].messages[2].message}}
-              </p>
-              <span class="d-flex justify-content-end text_icon">15.30</span>
             </div>
           </div>
           <!-- input messaggi -->

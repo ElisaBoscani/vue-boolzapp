@@ -3,6 +3,7 @@ createApp({
   data() {
     return {
       activeConctact: 0,
+
       contacts: [
         {
           name: "Michele",
@@ -172,14 +173,26 @@ createApp({
     selectChat(index) {
       this.activeConctact = index;
       console.log("clik");
-      /*   const chat = this.contacts[this.activeConctact];
-      return chat.avatar; */
+      const conctactEl = this.contacts[this.activeConctact];
+      console.log("conctactEl", conctactEl);
+      const newArray = conctactEl.messages.map((msg) => {
+        return msg.message;
+      });
+      return newArray;
+    },
+    differentMessage(index) {
+      this.activeConctact = index;
+      const conctactEl = this.contacts[this.activeConctact];
+      console.log("conctactEl", conctactEl);
+      const newTextArray = conctactEl.messages.map((msgTex) => {
+        if (msgTex.status === "received") {
+          return "message-received";
+        } else if (msgTex.status === "sent") {
+          return "message-sent";
+        }
+        console.log("msg.status", msgTex.status);
+      });
+      return newTextArray[index];
     },
   },
 }).mount("#app");
-
-/* selectImg(index) {
-  this.activeImage = index;
-  const selectedImg = this.slides[this.activeImage];
-  return selectedImg.image;
-}, */

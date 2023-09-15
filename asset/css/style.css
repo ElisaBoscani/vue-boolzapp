@@ -34,9 +34,6 @@ body {
   background-image: url(/asset/img/mine.jpg);
   width: 100%;
 }
-.bg_message {
-  background-color: var(--bz-app-success);
-}
 
 /* circol */
 .circol_icon {
@@ -70,4 +67,19 @@ body {
 
 .active {
   background-color: #009688;
+}
+
+.message-received {
+  display: flex;
+  justify-content: end;
+}
+.message-received > div {
+  background-color: var(--bz-app-success);
+}
+.message-sent {
+  display: flex;
+  justify-content: flex-start;
+}
+.message-sent > div {
+  background-color: var(--bz-app-white);
 }
