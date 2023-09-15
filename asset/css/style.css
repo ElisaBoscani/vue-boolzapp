@@ -71,15 +71,16 @@ body {
 
 .message-received {
   display: flex;
-  justify-content: end;
+  justify-content: flex-start;
 }
 .message-received > div {
-  background-color: var(--bz-app-success);
+  background-color: var(--bz-app-white);
 }
 .message-sent {
   display: flex;
-  justify-content: flex-start;
+
+  justify-content: end;
 }
 .message-sent > div {
-  background-color: var(--bz-app-white);
+  background-color: var(--bz-app-success);
 }

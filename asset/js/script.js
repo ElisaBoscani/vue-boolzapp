@@ -180,10 +180,9 @@ createApp({
       });
       return newArray;
     },
-    differentMessage(index) {
-      this.activeConctact = index;
+    differentMessage(activeConctact) {
       const conctactEl = this.contacts[this.activeConctact];
-      console.log("conctactEl", conctactEl);
+
       const newTextArray = conctactEl.messages.map((msgTex) => {
         if (msgTex.status === "received") {
           return "message-received";
@@ -192,7 +191,7 @@ createApp({
         }
         console.log("msg.status", msgTex.status);
       });
-      return newTextArray[index];
+      return newTextArray[activeConctact];
     },
   },
 }).mount("#app");
