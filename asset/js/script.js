@@ -3,7 +3,7 @@ createApp({
   data() {
     return {
       activeConctact: 0,
-
+      newMessage: "",
       contacts: [
         {
           name: "Michele",
@@ -170,28 +170,72 @@ createApp({
     };
   },
   methods: {
-    selectChat(index) {
+    //cambiare la chat
+    changeChat(index) {
       this.activeConctact = index;
-      console.log("clik");
-      const conctactEl = this.contacts[this.activeConctact];
-      console.log("conctactEl", conctactEl);
-      const newArray = conctactEl.messages.map((msg) => {
-        return msg.message;
-      });
-      return newArray;
     },
-    differentMessage(activeConctact) {
-      const conctactEl = this.contacts[this.activeConctact];
-
-      const newTextArray = conctactEl.messages.map((msgTex) => {
+    //mettere la classe al messaggio se è inviata o meno
+    messageClass(activeConctact, index) {
+      const conctactEl = this.contacts[activeConctact];
+      const msgsClasses = conctactEl.messages.map((msgTex, index) => {
         if (msgTex.status === "received") {
-          return "message-received";
-        } else if (msgTex.status === "sent") {
-          return "message-sent";
+          return { class: "message-received", id: index };
+        } else {
+          return { class: "message-sent", id: index };
         }
-        console.log("msg.status", msgTex.status);
       });
-      return newTextArray[activeConctact];
+
+      const msgClass = msgsClasses.find((classe) => {
+        if (classe.id === index) {
+          return classe;
+        }
+      });
+
+      if (msgClass) {
+        return msgClass.class;
+      } else {
+        return null;
+      }
+    },
+    //scrivere messaggi
+    sendMsg() {
+      const date = `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`;
+      const time = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+      const dateAndTime = `${date} ${time}`;
+
+      const newMessage = {
+        date: dateAndTime,
+        messagge: this.newMessage,
+        status: "send",
+      };
+
+      this.contacts[this.activeConctact].messages.push(newMessage);
+
+      console.log("messaggi:", this.contacts[this.activeConctact].messages);
+      this.newMessage = "";
+
+      autoAnswer = setTimeout(this.cpuAnswer, 1000);
+    },
+    //risposta del cp
+    cpuAnswer() {
+      const date = `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`;
+      const time = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+      const dateAndTime = `${date} ${time}`;
+
+      const newMessage = {
+        date: dateAndTime,
+        messagge: "ok",
+        status: "received",
+      };
+
+      this.contacts[this.activeConctact].messages.push(newMessage);
+    },
+    //cercare i nomi nella lista della chat
+    findChat() {
+      const filteredList = this.contacts.filter((chat) =>
+        chat.name.toLowerCase().includes(this.$refs.input.value.toLowerCase())
+      );
+      this.contacts = filteredList;
     },
   },
 }).mount("#app");

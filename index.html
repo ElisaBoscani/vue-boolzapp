@@ -72,7 +72,7 @@
               <a href="#" class="text_icon fs-5">Attiva notifiche desktop</a>
             </div>
           </div>
-          <!-- card chat -->
+          <!-- Lista delle chat -->
 
           <div class="input-group p-3 bg-light">
             <span class="input-group-text bg-white" id="basic-addon1">
@@ -83,6 +83,9 @@
             </span>
             <input
               type="text"
+              ref="input"
+              @input="findChat()"
+              @key.delete="findChat()"
               class="form-control p-3"
               placeholder="Cerca o inizia una nuova chat"
               aria-label="Username"
@@ -94,7 +97,7 @@
               class="d-flex justify-content-between p-4 border-top border-2 bg_white"
               :class="index === activeConctact ? 'active' : ''"
               v-for="(contact, index) in contacts"
-              @click="selectChat(index)"
+              @click="changeChat(index)"
             >
               <div class="d-flex gap-4">
                 <img :src="contact.avatar" alt="" class="circol" />
@@ -144,12 +147,11 @@
           <!-- messaggi della chat -->
           <div class="container height_message">
             <div
-              v-for="(msg, index) in selectChat(activeConctact)"
-              :class="differentMessage(index)"
+              v-for="(msg, index) in contacts[activeConctact].messages"
+              :class="messageClass(activeConctact, index)"
             >
               <div class="p-3 bg_message border rounded-4 width_message">
-                <p class="fs-5 fw-bolder lh-1">{{msg}}</p>
-
+                <p class="fs-5 fw-bolder lh-1">{{msg.message}}</p>
                 <span class="d-flex justify-content-end text_icon">15.30</span>
               </div>
             </div>
@@ -167,10 +169,12 @@
               </span>
               <input
                 type="text"
+                v-model="newMessage"
                 class="form-control p-3 border border-0"
                 placeholder="Scrivi un messaggio"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                @keydown.enter="sendMsg"
               />
               <span class="input-group-text bg-light btn" id="basic-addon1">
                 Invia
