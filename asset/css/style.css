@@ -1,6 +1,13 @@
 body {
-  background-color: var(--bz-app-principal);
   font-family: "Roboto", sans-serif;
+
+  background-image: linear-gradient(
+    to bottom,
+    var(--bz-app-header) 0,
+    var(--bz-app-header) 140px,
+    var(--bz-app-principal) 140px,
+    var(--bz-app-principal) 100%
+  );
   overflow: hidden;
 }
 /* colors */
@@ -37,8 +44,8 @@ body {
 
 /* circol */
 .circol_icon {
-  height: 80px;
-  width: 80px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
 }
 .circol {
@@ -50,8 +57,12 @@ body {
 .width_message {
   width: 40%;
 }
-.height_box {
+.height {
   height: calc(100% - 90px);
+}
+.height_box {
+  max-width: 1200px;
+  margin: 2rem auto;
 }
 .height_message {
   height: calc(100% - 206px);

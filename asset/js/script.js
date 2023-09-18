@@ -4,6 +4,8 @@ createApp({
     return {
       activeConctact: 0,
       newMessage: "",
+      searchTextList: "",
+      findConctact: [],
       contacts: [
         {
           name: "Michele",
@@ -205,8 +207,8 @@ createApp({
 
       const newMessage = {
         date: dateAndTime,
-        messagge: this.newMessage,
-        status: "send",
+        message: this.newMessage,
+        status: "sent",
       };
 
       this.contacts[this.activeConctact].messages.push(newMessage);
@@ -224,17 +226,22 @@ createApp({
 
       const newMessage = {
         date: dateAndTime,
-        messagge: "ok",
+        message: "ok",
         status: "received",
       };
 
       this.contacts[this.activeConctact].messages.push(newMessage);
+      console.log("cpu:", this.contacts[this.activeConctact].messages);
     },
     //cercare i nomi nella lista della chat
     findChat() {
-      const filteredList = this.contacts.filter((chat) =>
-        chat.name.toLowerCase().includes(this.$refs.input.value.toLowerCase())
+      let filteredList = this.contacts.filter((chat) =>
+        chat.name
+          .toLowerCase()
+          .includes(this.$refs.input.value.toLowerCase())
+          .push(this.findConctact)
       );
+      console.log(this.findConctact);
       this.contacts = filteredList;
     },
   },
