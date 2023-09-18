@@ -176,7 +176,6 @@ createApp({
     //cambiare la chat
     changeChat(index) {
       this.activeConctact = index;
-      this.findConctact = this.findChat();
       console.log("this.findConctact", this.findConctact);
       console.log(this.activeConctact);
     },

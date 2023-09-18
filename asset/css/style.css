@@ -69,7 +69,7 @@ body {
   height: calc(100% - 130px);
 }
 .height_chat {
-  height: calc(100% - 173px);
+  height: calc(100% - 185px);
   overflow: auto;
 }
 #app {
@@ -95,4 +95,15 @@ body {
 }
 .message-sent > div {
   background-color: var(--bz-app-success);
+}
+
+.elemento-visibile {
+  display: block;
+}
+.visibile {
+  display: block;
+}
+
+.nonVisibile {
+  display: none;
 }

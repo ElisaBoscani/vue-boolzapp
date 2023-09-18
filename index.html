@@ -100,13 +100,14 @@
             <div
               class="d-flex justify-content-between p-2 border-top border-2 bg_white"
               :class="index === activeConctact ? 'active' : ''"
+              :class="contacts.valore === true ? 'visibile' : 'nonVisibile' "
               v-for="(contact, index) in findChat()"
               @click="changeChat(index)"
             >
               <div class="d-flex gap-2">
                 <img :src="contact.avatar" alt="" class="circol" />
                 <div>
-                  <span class="fw-bold">{{contact.name}}</span>
+                  <span class="fw-bold">{{contact.name}} </span>
                   <p class="text_icon fs_small">Ultimo messaggio inviato</p>
                 </div>
               </div>
