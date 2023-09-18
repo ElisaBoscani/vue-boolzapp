@@ -44,18 +44,19 @@ body {
 
 /* circol */
 .circol_icon {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
 }
 .circol {
-  width: 70px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 
 /* dimensions */
 .width_message {
-  width: 40%;
+  width: 50%;
 }
 .height {
   height: calc(100% - 90px);
@@ -65,20 +66,22 @@ body {
   margin: 2rem auto;
 }
 .height_message {
-  height: calc(100% - 206px);
+  height: calc(100% - 130px);
 }
 .height_chat {
-  height: calc(100% - 338px);
+  height: calc(100% - 173px);
   overflow: auto;
 }
 #app {
   height: 100vh;
 }
-
-.active {
-  background-color: #009688;
+.fs_small {
+  font-size: 14px;
 }
-
+.active {
+  background-color: lightgray;
+}
+/* classe dei messaggi */
 .message-received {
   display: flex;
   justify-content: flex-start;

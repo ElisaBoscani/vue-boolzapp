@@ -28,10 +28,12 @@
   </head>
   <body>
     <div id="app">
-      <div class="container d-flex justify-content-center mt-4 height_box">
+      <div
+        class="container d-flex justify-content-center mt-4 height_box height"
+      >
         <!-- persone -->
 
-        <div class="bg_principal height">
+        <div class="bg_principal w-50">
           <div class="d-flex justify-content-between p-2">
             <div>
               <img
@@ -59,51 +61,56 @@
               class="bg-light circol_icon d-flex align-items-center justify-content-center"
             >
               <i
-                class="fa-solid fa-bell-slash fa-2xl"
+                class="fa-solid fa-bell-slash fa-lg"
                 style="color: #8edafc"
               ></i>
             </div>
             <div class="ps-3">
-              <p class="lh-1 fw-bold">Ricevi notifiche di nuovi messaggi</p>
-              <a href="#" class="text_icon">Attiva notifiche desktop</a>
+              <p class="lh-1 fw-bold fs_small m-0">
+                Ricevi notifiche di nuovi messaggi
+              </p>
+              <a href="#" class="text_icon fs_small"
+                >Attiva notifiche desktop</a
+              >
             </div>
           </div>
           <!-- Lista delle chat -->
 
-          <div class="input-group p-3 bg-light">
+          <div class="input-group p-2 bg-light">
             <span class="input-group-text bg-white" id="basic-addon1">
               <i
-                class="fa-solid fa-magnifying-glass fa-xl"
+                class="fa-solid fa-magnifying-glass fa-lg"
                 style="color: #808080"
               ></i>
             </span>
-
+            <!--  ref="input"
+            @input="findChat"
+            @key.delete="findChat" -->
             <input
               type="text"
-              class="form-control p-3"
-              placeholder="Cerca o inizia una nuova chat"
+              class="form-control fs_small"
+              placeholder="Cerca
+            o inizia una nuova chat"
               aria-label="Username"
               aria-describedby="basic-addon1"
               v-model="searchTextList"
-              ref="input"
-              @input="findChat"
             />
           </div>
           <div class="height_chat">
             <div
-              class="d-flex justify-content-between p-4 border-top border-2 bg_white"
+              class="d-flex justify-content-between p-2 border-top border-2 bg_white"
               :class="index === activeConctact ? 'active' : ''"
-              v-for="(contact, index) in contacts"
+              v-for="(contact, index) in findChat()"
               @click="changeChat(index)"
             >
-              <div class="d-flex gap-4">
+              <div class="d-flex gap-2">
                 <img :src="contact.avatar" alt="" class="circol" />
                 <div>
-                  <span class="fw-bold fs-4">{{contact.name}}</span>
-                  <p class="text_icon">Ultimo messaggio inviato</p>
+                  <span class="fw-bold">{{contact.name}}</span>
+                  <p class="text_icon fs_small">Ultimo messaggio inviato</p>
                 </div>
               </div>
-              <span class="text_icon">12.00</span>
+              <span class="text_icon fs_small">12.00</span>
             </div>
           </div>
         </div>
@@ -113,7 +120,7 @@
         <div class="bg_img">
           <!-- nome della chat -->
           <div
-            class="d-flex bg_principal justify-content-between align-items-center p-4"
+            class="d-flex bg_principal justify-content-between align-items-center p-2"
           >
             <div class="d-flex align-items-center gap-3">
               <img
@@ -122,23 +129,22 @@
                 class="circol"
               />
               <div>
-                <span class="fs-5 fw-bold"
+                <span class="fw-bold fs_small"
                   >{{contacts[activeConctact].name}}</span
                 >
-                <p class="text_icon">Ultimo accesso oggi alle 12.00</p>
+                <p class="text_icon fs_small m-0">
+                  Ultimo accesso oggi alle 12.00
+                </p>
               </div>
             </div>
             <div class="d-flex gap-3">
               <i
-                class="fa-solid fa-magnifying-glass fa-2xl"
+                class="fa-solid fa-magnifying-glass fa-sm"
                 style="color: #808080"
               ></i>
+              <i class="fa-solid fa-paperclip fa-sm" style="color: #808080"></i>
               <i
-                class="fa-solid fa-paperclip fa-2xl"
-                style="color: #808080"
-              ></i>
-              <i
-                class="fa-solid fa-ellipsis-vertical fa-2xl"
+                class="fa-solid fa-ellipsis-vertical fa-sm"
                 style="color: #808080"
               ></i>
             </div>
@@ -149,8 +155,8 @@
               v-for="(msg, index) in contacts[activeConctact].messages"
               :class="messageClass(activeConctact, index)"
             >
-              <div class="p-3 bg_message border rounded-4 width_message">
-                <p class="fs-5 fw-bolder lh-1">{{msg.message}}</p>
+              <div class="p-2 bg_message border rounded-4 width_message">
+                <p class="mt-2 mb-0 fw-bolder lh-1">{{msg.message}}</p>
                 <span class="d-flex justify-content-end text_icon">15.30</span>
               </div>
             </div>
@@ -158,7 +164,7 @@
           <!-- input messaggi -->
           <div class="bg-light">
             <div
-              class="input-group p-3 bg-light d-flex align-items-center gap-2"
+              class="input-group p-1 bg-light d-flex align-items-center gap-2"
             >
               <span class="input-group-text bg-light btn" id="basic-addon1">
                 <i
