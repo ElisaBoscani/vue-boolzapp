@@ -97,8 +97,8 @@ body {
   background-color: var(--bz-app-success);
 }
 
-.elemento-visibile {
-  display: block;
+.flex {
+  display: flex;
 }
 .visibile {
   display: block;

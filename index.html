@@ -83,9 +83,7 @@
                 style="color: #808080"
               ></i>
             </span>
-            <!--  ref="input"
-            @input="findChat"
-            @key.delete="findChat" -->
+
             <input
               type="text"
               class="form-control fs_small"
@@ -98,9 +96,8 @@
           </div>
           <div class="height_chat">
             <div
-              class="d-flex justify-content-between p-2 border-top border-2 bg_white"
-              :class="index === activeConctact ? 'active' : ''"
-              :class="contacts.valore === true ? 'visibile' : 'nonVisibile' "
+              class="flex justify-content-between p-2 border-top border-2 bg_white"
+              :class="index === activeConctact ? 'active' : '', contact.visible === true ? 'visibile' : 'nonVisibile' "
               v-for="(contact, index) in findChat()"
               @click="changeChat(index)"
             >

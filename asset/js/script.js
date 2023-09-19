@@ -6,7 +6,7 @@ createApp({
       newMessage: "",
       searchTextList: "",
       findConctact: [],
-      frutta: ["mele", "banabe", "meloni"],
+
       contacts: [
         {
           name: "Michele",
@@ -179,6 +179,7 @@ createApp({
       console.log("this.findConctact", this.findConctact);
       console.log(this.activeConctact);
     },
+
     //mettere la classe al messaggio se è inviata o meno
     messageClass(activeConctact, index) {
       const conctactEl = this.contacts[activeConctact];
@@ -238,19 +239,16 @@ createApp({
     },
     //cercare i nomi nella lista della chat
     findChat() {
-      /*  const filteredList = this.contacts.filter((chat) =>
-        chat.name.toLowerCase().includes(this.$refs.input.value.toLowerCase())
-      );
-      console.log(this.findConctact);
-      this.contacts = filteredList; */
-      /* this.findConctact = this.contacts ; */
-      return this.contacts.filter((conctact) =>
-        conctact.name.toLowerCase().includes(this.searchTextList.toLowerCase())
-      );
-    },
-    filtrareUtenti() {
-      this.findConctact = this.findChat();
-      console.log("this.findConctact", this.findConctact);
+      console.log("this.searchTextList", this.searchTextList);
+      return this.contacts.map((contact) => {
+        if (
+          contact.name.toLowerCase().includes(this.searchTextList.toLowerCase())
+        ) {
+          return { ...contact, visible: true };
+        } else {
+          return { ...contact, visible: false };
+        }
+      });
     },
   },
 }).mount("#app");
