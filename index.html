@@ -153,9 +153,18 @@
               v-for="(msg, index) in contacts[activeConctact].messages"
               :class="messageClass(activeConctact, index)"
             >
-              <div class="p-2 bg_message border rounded-4 width_message">
+              <div
+                class="p-2 bg_message border rounded-4 width_message position-relative"
+                @click="appearDelete"
+              >
                 <p class="mt-2 mb-0 fw-bolder lh-1">{{msg.message}}</p>
                 <span class="d-flex justify-content-end text_icon">15.30</span>
+                <div
+                  v-if="contacts.visible"
+                  class="delete position-absolute top-50 start-50 w-50 h-50"
+                >
+                  <p @click="deleteMessage(index)" class="p-1 m-0">Elimina</p>
+                </div>
               </div>
             </div>
           </div>

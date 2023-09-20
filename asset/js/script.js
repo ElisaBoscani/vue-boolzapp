@@ -250,5 +250,11 @@ createApp({
         }
       });
     },
+    deleteMessage(index) {
+      this.contacts[this.activeConctact].messages.splice(index, 1);
+    },
+    appearDelete() {
+      this.contacts.visible = !this.contacts.visible;
+    },
   },
 }).mount("#app");
